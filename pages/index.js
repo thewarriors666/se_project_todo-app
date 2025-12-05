@@ -34,6 +34,7 @@ const generateTodo = (data) => {
   //   }
 
   return todoElement;
+  console.log();
 };
 
 addTodoButton.addEventListener("click", () => {
