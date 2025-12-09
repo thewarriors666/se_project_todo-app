@@ -14,4 +14,4 @@ Uses HTML, CSS and Java script (will add pics)
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+https://thewarriors666.github.io/se_project_todo-app/
