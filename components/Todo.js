@@ -22,10 +22,10 @@ class Todo {
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
 
-  _dueDateEl() {
-    this._dueDate = new Date(this._data.date);
-    if (!isNaN(this._dueDate)) {
-      this._todoDate.textContent = `Due: ${this._dueDate.toLocaleString(
+  _setDueDateEl() {
+    this._setDueDate = new Date(this._data.date);
+    if (!isNaN(this._setDueDate)) {
+      this._todoDate.textContent = `Due: ${this._setDueDate.toLocaleString(
         "en-US",
         {
           year: "numeric",
@@ -49,7 +49,7 @@ class Todo {
 
     this._generateCheckboxEl();
     this._setEventListeners();
-    this._dueDateEl();
+    this._setDueDateEl();
 
     return this._todoElement;
   }
