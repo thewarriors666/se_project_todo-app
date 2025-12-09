@@ -1,14 +1,14 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+An app to organize and help keep your chores,tasks and lessons in order and easey to read.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+Can enter the name of your task; when it should be done and will remind you of your due date
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+Uses HTML, CSS and Java script (will add pics)
 
 ## Deployment
 
