@@ -1,5 +1,6 @@
 class FormValidator {
   constructor(settings, formEl) {
+    this._settings = settings;
     this._formSelector = settings.formSelector;
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
@@ -13,7 +14,7 @@ class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      this._showInputError(inputElement, errorMessage);
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(inputElement);
     }
@@ -71,9 +72,9 @@ class FormValidator {
   }
 
   resetValidation() {
+    this._formEl.reset();
     this._inputList.forEach((input) => this._hideInputError(input));
     this._toggleButtonState();
-    this._formEl.reset();
   }
 }
 
