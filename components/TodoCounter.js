@@ -3,7 +3,9 @@ class TodoCounter {
     this._element = document.querySelector(selector);
     this._completed = 0;
     this._total = todos.length;
-    this._completed = todos.filter((todo) => todo._completed).length;
+    this._completed = todos.filter((todo) => todo.completed).length;
+
+    this._updateText();
   }
 
   updateCompleted = (increment) => {
@@ -12,7 +14,7 @@ class TodoCounter {
   };
 
   updateTotal = (increment) => {
-    this._completed += increment ? 1 : -1;
+    this._total += increment ? 1 : -1;
     this._updateText();
   };
 

@@ -7,15 +7,12 @@ class PopupWithForm extends Popup {
   }
 
   _getInputValues() {
-    this._popupForm = this._popupElement.querySelector("popup__form");
+    this._popupForm = this._popupElement.querySelector(".popup__form");
     this._inputList = this._popupForm.querySelectorAll(".popup__input");
 
     const inputValues = {};
     this._inputList.forEach((input) => {
-      //add a key/value pair to the values object for each input
-      //the key is input.name
-      //value is input.value
-      //need to use bracket notation not .
+      inputValues[input.name] = input.value;
     });
     return inputValues;
   }
@@ -24,9 +21,8 @@ class PopupWithForm extends Popup {
     super.setEventListeners();
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      const inputValues = this._getInputValues;
+      const getInputValues = this._getInputValues;
 
-      // pass results of _getInputValues to submission handler
       this._handleFormSubmit(evt);
     });
   }
