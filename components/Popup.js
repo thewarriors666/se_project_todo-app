@@ -11,10 +11,12 @@ class Popup {
   };
 
   open() {
+    this._popupElement.classList.add("popup_visible");
     addEventListener("keyup", this._handleEscapeClose);
   }
 
   close() {
+    this._popupElement.classList.remove("popup_visible");
     removeEventListener("keyup", this._handleEscapeClose);
   }
 

@@ -16,6 +16,19 @@ const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
 
+const generateTodo = (data) => {
+  const todo = new Todo(
+    data,
+    "#todo-template",
+    handleCheck,
+    handleDelete,
+    handleTotal
+  );
+  const todoElement = todo.getView();
+
+  return todoElement;
+};
+
 const addTodopopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handFormSubmit: (inputValues) => {
@@ -37,7 +50,7 @@ const addTodopopup = new PopupWithForm({
 addTodopopup.setEventListener();
 
 const section = new Section({
-  items: [],
+  items: initialTodos,
   renderer: (item) => {
     const el = generateTodo(item);
     section.addItem(el);
@@ -64,19 +77,6 @@ function handleTotal(updateCompleted, increment) {
   }
 }
 
-const generateTodo = (data) => {
-  const todo = new Todo(
-    data,
-    "#todo-template",
-    handleCheck,
-    handleDelete,
-    handleTotal
-  );
-  const todoElement = todo.getView();
-
-  return todoElement;
-};
-
 const renderTodo = (item) => {
   const el = generateTodo(item);
   section.addItem(el);
@@ -100,7 +100,4 @@ addTodoForm.addEventListener("submit", (evt) => {
   renderTodo(item);
   addTodopopup.close();
   newTodoValidator.resetValidation();
-  initialTodos.forEach((item) => {
-    renderTodo(item);
-  });
 });
