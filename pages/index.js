@@ -17,13 +17,7 @@ const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
 
 const generateTodo = (data) => {
-  const todo = new Todo(
-    data,
-    "#todo-template",
-    handleCheck,
-    handleDelete,
-    handleTotal
-  );
+  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
   const todoElement = todo.getView();
 
   return todoElement;
@@ -65,6 +59,7 @@ function handleCheck(completed) {
 }
 
 function handleDelete(completed) {
+  todoCounter.updateTotal(false);
   if (completed) {
     todoCounter.updateCompleted(false);
   }
@@ -73,7 +68,7 @@ function handleDelete(completed) {
 function handleTotal(updateCompleted, increment) {
   todoCounter.updateTotal(increment);
   if (updateCompleted) {
-    todoCounter.updateCompleted(increment);
+    todoCounter.updateCompleted(false);
   }
 }
 
@@ -98,6 +93,7 @@ addTodoForm.addEventListener("submit", (evt) => {
   const id = uuidv4();
   const item = { name, date, id };
   renderTodo(item);
+  todoCounter.updateTotal(true);
   addTodopopup.close();
   newTodoValidator.resetValidation();
 });

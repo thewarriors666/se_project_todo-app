@@ -10,13 +10,13 @@ class Todo {
   _setEventListeners() {
     this._todoDeleteBtn.addEventListener("click", () => {
       this._handleDelete(this._data.completed);
-      this._handleTotal(this._data.completed);
-      this._todoElement.remove();
+      this._remove();
+      // this._handleTotal(false);
     });
 
     this._todoCheckboxEl.addEventListener("change", () => {
-      this._handleCheck(this._completed);
       this._data.completed = !this._data.completed;
+      this._handleCheck(this._data.completed);
     });
   }
 
@@ -27,6 +27,15 @@ class Todo {
     this._todoCheckboxEl.id = `todo-${this._data.id}`;
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
+
+  _toggleCompletion = () => {
+    this._completed = !this._completed;
+  };
+
+  _remove = () => {
+    this._todoElement.remove();
+    this._todoElement = null;
+  };
 
   _setDueDateEl() {
     this._setDueDate = new Date(this._data.date);
